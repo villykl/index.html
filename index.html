@@ -86,11 +86,19 @@ button {
 
 <script>
 let current = 1;
+const total = 3;
 
 function nextPage() {
-  if (current <= 3) {
+  if (current <= total) {
     document.getElementById("p" + current).classList.add("flipped");
     current++;
+  }
+}
+
+function prevPage() {
+  if (current > 1) {
+    current--;
+    document.getElementById("p" + current).classList.remove("flipped");
   }
 }
 </script>
