@@ -20,3 +20,80 @@
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Моя книга</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: #0b0b0b;
+      color: #ffffff;
+      font-family: Georgia, serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .book {
+      width: 320px;
+      height: 420px;
+      background: #111;
+      border-radius: 12px;
+      box-shadow: 0 0 50px rgba(255,255,255,0.1);
+      padding: 25px;
+      text-align: center;
+      transition: transform 0.6s ease, box-shadow 0.6s;
+      cursor: pointer;
+    }
+
+    .book:hover {
+      transform: rotateY(12deg) scale(1.05);
+      box-shadow: 0 0 80px rgba(255,255,255,0.2);
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .quote {
+      font-size: 14px;
+      color: #aaa;
+      margin-bottom: 30px;
+      font-style: italic;
+    }
+
+    .menu a {
+      display: block;
+      margin: 10px 0;
+      text-decoration: none;
+      color: #fff;
+      font-size: 18px;
+      transition: 0.3s;
+    }
+
+    .menu a:hover {
+      color: #9b7cff;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="book">
+  <h1>Моя книга</h1>
+  <div class="quote">"Слова — это следы души"</div>
+
+  <div class="menu">
+    <a href="#">Стихи</a>
+    <a href="#">Рассказы</a>
+    <a href="#">Кроссворды</a>
+  </div>
+</div>
+
+</body>
+</html>
