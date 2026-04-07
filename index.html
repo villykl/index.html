@@ -16,102 +16,82 @@ body {
   color: white;
 }
 
-.scene {
-  perspective: 1200px;
-}
-
 .book {
-  width: 320px;
-  height: 420px;
+  width: 600px;
+  height: 400px;
   position: relative;
-  transform-style: preserve-3d;
-  cursor: pointer;
-}
-
-.cover {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: #111;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 0 40px rgba(255,255,255,0.15);
-  transform-origin: left;
-  transition: transform 1s;
+  perspective: 1500px;
 }
 
 .page {
-  position: absolute;
-  width: 100%;
+  width: 50%;
   height: 100%;
   background: #1a1a1a;
-  border-radius: 10px;
-  padding: 30px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform-origin: left;
+  transition: transform 1s;
+  padding: 20px;
   box-sizing: border-box;
-  opacity: 0;
-  transition: opacity 1s;
 }
 
-.book.open .cover {
-  transform: rotateY(-160deg);
+.page:nth-child(1) { z-index: 3; }
+.page:nth-child(2) { z-index: 2; }
+.page:nth-child(3) { z-index: 1; }
+
+.flipped {
+  transform: rotateY(-180deg);
 }
 
-.book.open .page {
-  opacity: 1;
-}
-
-h1 {
-  margin-bottom: 10px;
-}
-
-.quote {
-  font-style: italic;
-  color: #aaa;
-  margin-bottom: 20px;
-}
-
-.menu a {
-  display: block;
+button {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  background: #222;
   color: white;
-  text-decoration: none;
-  margin: 8px 0;
-}
-
-.menu a:hover {
-  color: #9b7cff;
+  border: none;
+  cursor: pointer;
 }
 </style>
 </head>
 
 <body>
 
-<div class="scene">
-  <div class="book" onclick="openBook(this)">
-    
-    <div class="cover">
-      <h1>Моя книга</h1>
-      <div class="quote">"Слова — это следы души"</div>
-      <small>Нажми, чтобы открыть</small>
-    </div>
+<div class="book">
 
-    <div class="page">
-      <h2>Разделы</h2>
-    <div class="menu">
-  <a href="poems.html">Стихи</a>
-  <a href="stories.html">Рассказы</a>
-  <a href="crossword.html">Кроссворды</a>
-</div>
-    </div>
-
+  <div class="page" id="p1">
+    <h2>Моя книга</h2>
+    <p>"Слова — это следы души"</p>
   </div>
+
+  <div class="page" id="p2">
+    <h2>Стихи</h2>
+    <p>
+    Тишина говорит со мной,<br>
+    Словно ветер в пустом окне...
+    </p>
+  </div>
+
+  <div class="page" id="p3">
+    <h2>Продолжение</h2>
+    <p>Здесь будет больше твоих стихов...</p>
+  </div>
+
+  <button onclick="nextPage()">Листать →</button>
+
 </div>
 
 <script>
-function openBook(book) {
-  book.classList.toggle("open");
+let current = 1;
+
+function nextPage() {
+  if (current <= 3) {
+    document.getElementById("p" + current).classList.add("flipped");
+    current++;
+  }
 }
 </script>
 
